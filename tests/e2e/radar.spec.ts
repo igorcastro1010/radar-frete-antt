@@ -37,6 +37,8 @@ test("dados persistidos, filtros, comparação, CSV e simulação no navegador",
   if (await toggle.isEnabled()) {
     await toggle.check();
     await expect(page.locator(".calculated-value")).toContainText("R$");
+    await page.getByRole('combobox',{name:'Modalidade / tabela',exact:true}).selectOption('C');
+    await expect(page.getByText(/tempo total de carga e descarga de até 3 horas/)).toBeVisible();
   } else
     await expect(
       page.getByText("Simulador temporariamente indisponível"),

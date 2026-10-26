@@ -1381,9 +1381,10 @@ function Simulator({
             </label>
             {(table === "C" || table === "D") && (
               <p className="field-hint">
-                Alto desempenho exige atender à definição normativa, incluindo
-                carga e descarga de até 3 horas cada e demais requisitos do art.
-                2º.
+                Alto desempenho exige previsão em contrato, frota dedicada ou
+                fidelizada, operação em 2 ou 3 turnos e tempo total de carga e
+                descarga de até 3 horas, com ambas sob responsabilidade do
+                contratante, conforme o art. 2º.
               </p>
             )}
             {!row && (

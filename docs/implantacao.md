@@ -15,3 +15,7 @@ Este documento é atualizado ao terminar a publicação. Configuração de infra
 ## Publicação e execução automática
 
 Pendente de anexar a evidência final da implantação, CI e agendamento. Consulte também o painel e os workflows para o estado mais recente, pois este relatório é um registro pontual.
+
+## Auditoria de dependências
+
+A versão inicial usada como referência dos projetos existentes (Next.js 16.3.8) apresentou avisos de segurança na auditoria. A implantação preliminar foi removida sem promoção. O projeto foi atualizado para Next.js 16.4.3, eslint-config-next correspondente e Zod transitivo 4.6.7 por override de versão da mesma major. `npm audit --omit=dev` e a instalação completa retornaram zero vulnerabilidades. Lint, tipos, 23 testes e build passaram novamente na versão corrigida antes da publicação final.
