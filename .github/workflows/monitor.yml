@@ -1,0 +1,29 @@
+name: Monitoramento ANTT
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: radar-frete-monitor
+  cancel-in-progress: false
+jobs:
+  synchronize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Consultar fontes e persistir resultado
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          RADAR_URL: https://radar-frete-antt.vercel.app
+          RADAR_TRIGGER: ${{ github.event_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$CRON_SECRET"
+          curl --fail-with-body --silent --show-error --max-time 260 \
+            --request POST \
+            --header "Authorization: Bearer ${CRON_SECRET}" \
+            --header "X-Radar-Trigger: ${RADAR_TRIGGER}" \
+            "${RADAR_URL}/api/sync"

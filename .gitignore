@@ -3,7 +3,14 @@ node_modules/
 .vercel/
 .env*
 !.env.example
+*.tsbuildinfo
+docs/research/calculator.js
+docs/research/ementario.html
+!.env.example
 .agents/
 .superpowers/
 test-results/
 playwright-report/
+.vercel
+.env*
+!.env.example
