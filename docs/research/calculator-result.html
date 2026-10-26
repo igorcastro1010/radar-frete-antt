@@ -1,0 +1,174 @@
+
+
+
+<style>
+    .alinharbotao {
+        float: right;
+        padding-top: 6px;
+    }
+</style>
+
+
+<div style="margin-left: 0px;">
+
+    
+
+    <div class="card card-box">
+        <div id="resultado-calculadora" class="card-body">
+<form action="/?Length=4" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#resultado-calculadora" id="form-consulta" method="post"><input name="__RequestVerificationToken" type="hidden" value="KB9S-IKZ7f00M9PUuWcyplYMx2ny7wvc_40DdEqa2ksnZhTZ2WaeFE5z_rY-K0mAgBR4n39NwISL_Qlrtgu7MdB9duAc6NZMebiYz1LIOpo1" />                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2>Calcular Piso M&#237;nimo de Frete</h2>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6 form-calculadora">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label" for="Filtro_IdTipoCarga">Tipo de Carga</label>
+                                <select class="form-control" data-val="true" data-val-number="The field Tipo de Carga must be a number." data-val-required="Informe o tipo de carga" id="Filtro_IdTipoCarga" name="Filtro.IdTipoCarga"><option value="">Selecione</option>
+<option selected="selected" value="5">Carga Geral</option>
+<option value="12">Carga Granel Pressurizada</option>
+<option value="4">Conteinerizada</option>
+<option value="3">Frigorificada ou Aquecida</option>
+<option value="2">Granel l&#237;quido</option>
+<option value="1">Granel s&#243;lido</option>
+<option value="6">Neogranel</option>
+<option value="11">Perigosa (carga geral)</option>
+<option value="10">Perigosa (conteinerizada)</option>
+<option value="9">Perigosa (Frigorificada ou Aquecida)</option>
+<option value="8">Perigosa (granel l&#237;quido)</option>
+<option value="7">Perigosa (granel s&#243;lido)</option>
+</select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Filtro.IdTipoCarga" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label" for="Filtro_NumeroEixos">N&#250;mero de Eixos*</label>
+                                <select class="form-control" data-val="true" data-val-number="The field Número de Eixos* must be a number." data-val-required="Informe o Número de Eixos" id="Filtro_NumeroEixos" name="Filtro.NumeroEixos"><option value="">Selecione</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option selected="selected" value="6">6</option>
+<option value="7">7</option>
+<option value="9">9</option>
+</select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Filtro.NumeroEixos" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label" for="Filtro_Distancia">Dist&#226;ncia</label>
+                                <input class="form-control text-box single-line" data-val="true" data-val-number="The field Distância must be a number." data-val-range="Preencha valores entre 1 e 99999" data-val-range-max="99999" data-val-range-min="1" data-val-required="Informe a Distância" id="Filtro_Distancia" name="Filtro.Distancia" type="number" value="100" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Filtro.Distancia" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 divCheckbox">
+                                <label class="control-label col-12 col-sm-10 col-md-6 margin-right-12" for="Filtro_CargaLotacao" style="float: left; width: 80%;">
+
+
+
+
+
+
+
+
+
+                                    É composição veicular? <br>
+                                    <span style="font-size: 85%;">(veículo automotor + implemento ou caminhão simples)</span>
+                                </label>
+                                <div class="alinharbotao">
+                                    <input checked="checked" class="form-control check-box" data-off="Não" data-offstyle="danger" data-on="Sim" data-onstyle="success" data-size="sm" data-toggle="toggle" data-val="true" data-val-required="The É Carga Lotação? field is required." id="Filtro_CargaLotacao" name="Filtro.CargaLotacao" type="checkbox" value="true" /><input name="Filtro.CargaLotacao" type="hidden" value="false" />
+                                </div>
+                            </div>
+                            <div class="col-12 divCheckbox">
+                                <label class="control-label col-9 col-sm-10 col-md-6 margin-right-12" for="Filtro_AltoDesempenho" style="margin-top: 10px;">
+                                    É Alto Desempenho?
+                                </label>
+
+                                <div class="alinharbotao">
+                                    <input class="form-control check-box" data-off="Não" data-offstyle="danger" data-on="Sim" data-onstyle="success" data-size="sm" data-toggle="toggle" data-val="true" data-val-required="The É Alto Desempenho? field is required." id="Filtro_AltoDesempenho" name="Filtro.AltoDesempenho" type="checkbox" value="true" /><input name="Filtro.AltoDesempenho" type="hidden" value="false" />
+                                </div>
+                            </div>
+                            <div class="col-12 divCheckbox">
+                                <label class="control-label col-9 col-sm-10 col-md-6 margin-right-12" for="Filtro_RetornoVazio" style="margin-top: 10px;">
+                                    Retorno Vazio?
+                                </label>
+                                <div class="alinharbotao subirbotao">
+                                    <input class="form-control check-box" data-off="Não" data-offstyle="danger" data-on="Sim" data-onstyle="success" data-size="sm" data-toggle="toggle" data-val="true" data-val-required="The Retorno Vazio? field is required." id="Filtro_RetornoVazio" name="Filtro.RetornoVazio" type="checkbox" value="true" /><input name="Filtro.RetornoVazio" type="hidden" value="false" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 float-right">
+                                <button type="submit" class="btn btn-primary float-right">Calcular</button>
+                            </div>
+                        </div>
+                        <div id="tabela" style="text-align: left;">
+                                <span>
+                                    Informações de cálculo conforme parâmetros informados:
+                                    <br />
+                                    Operação de Transporte:<span style="font-weight: bold;">Tabela A - Transporte Rodovi&#225;rio de Carga e Lota&#231;&#227;o</span>
+                                    <br />
+                                    Distância: <span style="font-weight: bold;">100 Km</span>
+                                    <br />
+                                    Coeficiente de custo de deslocamento (CCD): <span style="font-weight: bold;"> 7,5347 </span>
+                                    <br />
+                                    Coeficiente de custo de carga e descarga (CC): <span style="font-weight: bold;">671,93</span>
+                                    <br />
+                                    Valor de ida = (Distância x CCD)+CC: <span style="font-weight: bold;">1.425,40</span>
+                                    <br />
+
+                                    Valor do retorno vazio (caso exista) = 0,92 x Distância x CCD:
+
+<span style="font-weight: bold;">0,00</span>
+
+                                    <br />
+                                </span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6 text-center texto-resultado">
+                            <div class="col-xs-12 cabecalho">
+                                <div class="texto">
+                                    <span>VALORES CALCULADOS CONFORME Resolução ANTT nº 5.867/2020, atualizada em <b>30/09/2026</b> pela <b>PORT.SUROC N&#186;22/2026</b></span>
+                                </div>
+                                <br />
+
+                            </div>
+                            <div class="col-xs-12 valorFrete">
+                                R$ 1.425,40
+                            </div>
+                            <div class="col-xs-12">
+                                <span>VALOR TABELA ANTT OFICIAL</span>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="col-xs-12 texto-antt" style="text-align: left">
+                                <span>
+                                    *Notas:
+                                    <br />
+                                    1. Caso a Combinação Veicular de Carga possua número de eixos não previstos nas tabelas, conforme Resolução n° 5.867/2020, o valor do piso mínimo de frete é calculado utilizando-se a quantidade de eixos imediatamente inferior, ou superior, no caso de não existir quantidade de eixos imediatamente inferior, aplicando-se o mesmo princípio no caso da contratação de veículo automotor de cargas.
+                                    <br />
+                                    2. Para compor o valor final do frete a ser pago ao transportador, deverão ser negociados os valores dos incisos I, III e IV da Resolução ANTT nº 5.867/2020. Esse parágrafo trata de despesas extras do transporte e do caminhoneiro, além de tributos, taxas e outros itens.
+                                    <br />
+                                    3. O custo de diárias que envolve a remuneração para refeições realizadas e dos pernoites realizados durante a operação do transporte rodoviário de cargas no contrato contido neste cálculo. Acrescenta-se esse componente aos custos fixos do Transporte definidos Resolução ANTT nº 5.867/2020.
+                                    <br />
+                                    4. Especificamente para a operação do transporte rodoviário de alto desempenho, somente incide o custo com refeições.
+                                    <br />
+                                    5. O valor do pedágio, quando houver, deverá ser obrigatoriamente acrescido aos pisos mínimos, devendo o pagamento ser realizado na forma da Lei nº 10.209, de 23 de março de 2001, e regulamentação vigente.
+                                    <br />
+                                    6. O pagamento do retorno vazio é obrigatório para o transporte de contêineres e nos casos de veículos de frotas específicas, dedicados ou fidelizados por razões sanitárias ou submetidos a certificações que delimitem o tipo de produto que pode ser transportado, observada a regra estabelecida no § 6º do art. 5º Resolução ANTT nº 5.867/2020.
+                                    <br />
+                                </span>
+                            </div>
+                    </div>
+
+                </div>
+</form>        </div>
+    </div>
+</div>
