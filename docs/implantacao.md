@@ -14,7 +14,19 @@ Este documento é atualizado ao terminar a publicação. Configuração de infra
 
 ## Publicação e execução automática
 
-Pendente de anexar a evidência final da implantação, CI e agendamento. Consulte também o painel e os workflows para o estado mais recente, pois este relatório é um registro pontual.
+- Produção publicada em [radar-frete-antt.vercel.app](https://radar-frete-antt.vercel.app).
+- Implantação `dpl_H5NfkQjtBhQiv7TPJc8eQy6q2sB4`, status READY, Next.js 16.4.3, região das funções `gru1`, commit de aplicação `c18830c384e602c8269d3693d60fe1cf5073b203`.
+- A mesma implantação foi testada antes da promoção e o domínio canônico foi conferido pelo conector Vercel, vinculado ao projeto novo.
+- [CI da aplicação aprovado](https://github.com/igorcastro1010/radar-frete-antt/actions/runs/40346914506): lint, tipos, 23 testes e build.
+- Oito testes Playwright passaram contra o endereço canônico: filtros, comparação, download CSV, simulador, quatro telas em 360/390/430/1440 px, teclado, movimento reduzido e preservação dos dados exibidos quando a API falha. Nenhum overflow horizontal ou erro de execução do navegador nos cenários normais.
+- `/api/state` confirmou conexão com o Blob privado: duas versões, 272 combinações na versão atual, oito validações oficiais do simulador.
+- `POST /api/sync` sem autenticação: 401. `POST /api/check` com origem externa: 403. Origem correta dentro do intervalo: 429. Chamada autenticada com segredo exclusivo: reconhecida e limitada pelo cooldown.
+- Varredura de logs de produção entre 11h44 e 12h14 de Fortaleza: zero registros de erro retornados.
+- Workflow horário `Monitoramento ANTT` confirmado como `active` na branch padrão `main`. Até a consulta de 12h26 de Fortaleza, não havia execução de evento `schedule` observada para a janela de 12h17. O painel mantém `lastAutomatic` vazio.
+- Um [disparo manual de diagnóstico](https://github.com/igorcastro1010/radar-frete-antt/actions/runs/40348518714), criado às 12h21, permanecia em `queued`, sem jobs iniciados, às 12h26. Isso não é execução automática comprovada. O status público de Actions estava operacional; não foi inferida uma indisponibilidade global.
+- **Pendência externa:** observar a primeira execução agendada completa. A configuração e as credenciais foram verificadas; a execução do agendador não foi declarada concluída sem evidência.
+
+Consulte também o painel e os workflows para o estado mais recente, pois este relatório é um registro pontual.
 
 ## Auditoria de dependências
 

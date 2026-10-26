@@ -37,8 +37,12 @@ test("dados persistidos, filtros, comparação, CSV e simulação no navegador",
   if (await toggle.isEnabled()) {
     await toggle.check();
     await expect(page.locator(".calculated-value")).toContainText("R$");
-    await page.getByRole('combobox',{name:'Modalidade / tabela',exact:true}).selectOption('C');
-    await expect(page.getByText(/tempo total de carga e descarga de até 3 horas/)).toBeVisible();
+    await page
+      .getByRole("combobox", { name: "Modalidade / tabela", exact: true })
+      .selectOption("C");
+    await expect(
+      page.getByText(/tempo total de carga e descarga de até 3 horas/),
+    ).toBeVisible();
   } else
     await expect(
       page.getByText("Simulador temporariamente indisponível"),
@@ -79,4 +83,45 @@ test("rotas internas negam acesso não autenticado e origem externa", async ({
       })
     ).status(),
   ).toBe(403);
+});
+
+test("navegação por teclado e movimento reduzido preservam acesso ao conteúdo", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.getByText("TABELA VIGENTE VALIDADA")).toBeVisible();
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("link", { name: "Ir para o conteúdo" }),
+  ).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("main")).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("button", { name: "Alertas", exact: true }),
+  ).toBeFocused();
+});
+
+test("erro na leitura mantém os dados já exibidos e informa a falha", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByText("TABELA VIGENTE VALIDADA")).toBeVisible();
+  await page.route("**/api/state", (route) =>
+    route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      body: JSON.stringify({ error: "Falha simulada somente neste teste" }),
+    }),
+  );
+  await page.evaluate(() =>
+    document.dispatchEvent(new Event("visibilitychange")),
+  );
+  await expect(
+    page
+      .getByRole("alert")
+      .filter({ hasText: "Não foi possível atualizar o painel" }),
+  ).toBeVisible();
+  await expect(page.getByText("TABELA VIGENTE VALIDADA")).toBeVisible();
 });
